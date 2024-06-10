@@ -13,12 +13,12 @@ const { handleErrors } = require("./middlewares");
 
 const router = express.Router();
 
-router.get("/signup", (req, res) => {
+router.get("/admin/signup", (req, res) => {
   res.send(signupTemplate({ req }));
 });
 
 router.post(
-  "/signup",
+  "/admin/signup",
   [requireEmail, requirePassword, requirePasswordConfirmation],
   handleErrors(signupTemplate),
   async (req, res) => {
@@ -35,16 +35,16 @@ router.post(
   }
 );
 
-router.get("/signout", (req, res) => {
+router.get("/admin/signout", (req, res) => {
   req.session = null;
-  res.send("You are logged out");
+  res.redirect("/admin/signin");
 });
-router.get("/signin", (req, res) => {
+router.get("/admin/signin", (req, res) => {
   res.send(signinTemplate({}));
 });
 
 router.post(
-  "/signin",
+  "/admin/signin",
   [requireEmailExists, requirePasswordValid],
   handleErrors(signinTemplate),
   async (req, res) => {

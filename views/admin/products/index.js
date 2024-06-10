@@ -26,6 +26,7 @@ module.exports = ({ products }) => {
 
   return layout({
     content: `
+      <a href="/admin/signout" style="font-weight:bold; font-size: 1.5rem; position: absolute; top: -2rem; bottom: 0; right: 0; ">Signout</a>
       <div class="control">
         <h1 class="subtitle">Products</h1>  
         <a href="/admin/products/new" class="button is-primary">New Product</a>
@@ -43,6 +44,7 @@ module.exports = ({ products }) => {
           ${renderedProducts}
         </tbody>
       </table>
+      
     `,
   });
 };
